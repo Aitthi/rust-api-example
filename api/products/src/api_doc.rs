@@ -4,7 +4,7 @@ use utoipa::{
 };
 
 // internal
-use crate::resource;
+use crate::resource::{self, create};
 
 // const
 pub const BASE_PATH: &str = "/api/products";
@@ -22,8 +22,8 @@ pub const BASE_PATH: &str = "/api/products";
     modifiers(&ServerBase),
     components(
         schemas(
-            resource::CreateResponse,
-            resource::CreateInput
+            create::CreateResponse,
+            create::CreateInput
         )
     )
 )]

@@ -5,12 +5,6 @@ pub mod login;
 use axum::{body::Body, http::Response, Json};
 use serde_json::Value;
 
-// export Schema for API documentation
-pub use login::{
-    LoginInput,
-    LoginResponse
-};
-
 #[utoipa::path(
     post,
     path = "/login",
