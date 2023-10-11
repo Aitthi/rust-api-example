@@ -1,4 +1,4 @@
-// mod instructions;
+// mod resource;
 pub mod login;
 
 // external

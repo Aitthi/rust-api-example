@@ -12,7 +12,7 @@ a simple example of rust api
 │   │   │   ├── lib.rs
 │   │   │   ├── routes.rs
 │   │   │   ├── api_doc.rs
-│   │   │   ├── instructions
+│   │   │   ├── resource
 │   │   │   │   ├── mod.rs
 │   │   │   │   └── som_func.rs
 ├── runtime

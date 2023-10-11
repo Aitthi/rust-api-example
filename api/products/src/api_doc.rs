@@ -1,7 +1,7 @@
 use utoipa::OpenApi;
 
 // internal
-use crate::instructions;
+use crate::resource;
 
 #[derive(OpenApi)]
 #[openapi(
@@ -11,12 +11,12 @@ use crate::instructions;
         description = "An API to manage products"
     ),
     paths(
-        instructions::create
+        resource::create
     ),
     components(
         schemas(
-            instructions::CreateResponse,
-            instructions::CreateInput
+            resource::CreateResponse,
+            resource::CreateInput
         )
     )
 )]
