@@ -1,6 +1,11 @@
 # Rust-api-example
 a simple example of rust api
 
+## OpenAPI UI
+```
+http://localhost:8080/apidoc
+```
+
 ## Folder structure
 ```
 .
