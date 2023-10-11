@@ -5,7 +5,6 @@ use crate::resource;
 
 // const
 pub const BASE_PATH: &str = "/api/users";
-pub const BASE_DESCRIPTION: &str = "Base path for users API";
 
 #[derive(OpenApi)]
 #[openapi(
@@ -30,17 +29,11 @@ pub struct ApiDoc;
 struct ServerBase;
 impl Modify for ServerBase {
     fn modify(&self, openapi: &mut utoipa::openapi::OpenApi) {
-        let mut binding = Box::new(&mut openapi.paths);
-        let mut tag = utoipa::openapi::Tag::default();
-        tag.name = BASE_PATH.to_string();
-        tag.description = Some(BASE_DESCRIPTION.to_string());
-
-        openapi.tags = Some(vec![tag]);
-        for (_, item) in binding.as_mut().paths.iter_mut() {
-            item.servers = Some(vec![
-                utoipa::openapi::Server::new(BASE_PATH)
-            ]);
+        let paths = openapi.paths.paths.clone();
+        openapi.paths.paths.clear();
+        for (path, item) in paths.iter() {
+            let path = format!("{}{}", BASE_PATH, path);
+            openapi.paths.paths.insert(path, item.clone());
         }
-
     }
 }
