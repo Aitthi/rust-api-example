@@ -20,6 +20,18 @@ pub struct LoginResponse {
     pub data: Value,
 }
 
+#[utoipa::path(
+    post,
+    path = "/login",
+    request_body = LoginInput,
+    responses(
+        (
+            status = http::StatusCode::OK, 
+            description = "Successfully signed in",
+            body = LoginResponse
+        )
+    ),
+)]
 pub async fn login(mut input: Json<Value>) -> Response<Body> {
     let input: LoginInput = match serde_json::from_value(input.take()) {
         Ok(r) => r,

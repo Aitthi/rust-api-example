@@ -22,6 +22,18 @@ pub struct CreateResponse {
     pub data: Value,
 }
 
+#[utoipa::path(
+    post,
+    path = "/create",
+    request_body = CreateInput,
+    responses(
+        (
+            status = http::StatusCode::CREATED, 
+            description = "Successfully created product",  
+            body = CreateResponse
+        )
+    ),
+)]
 pub async fn create(mut input: Json<Value>) -> Response<Body> {
     let input: CreateInput = match serde_json::from_value(input.take()) {
         Ok(r) => r,

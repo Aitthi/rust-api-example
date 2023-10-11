@@ -1,7 +1,7 @@
 use utoipa::{OpenApi, Modify};
 
 // internal
-use crate::resource::{self, login};
+use crate::resource;
 
 // const
 pub const BASE_PATH: &str = "/api/users";
@@ -19,8 +19,8 @@ pub const BASE_PATH: &str = "/api/users";
     modifiers(&ServerBase),
     components(
         schemas(
-            login::LoginResponse,
-            login::LoginInput
+            resource::LoginResponse,
+            resource::LoginInput
         )
     )
 )]
