@@ -17,7 +17,7 @@ pub use login::{
     request_body = LoginInput,
     responses(
         (
-            status = http::StatusCode::CREATED, 
+            status = http::StatusCode::OK, 
             description = "Successfully signed in",
             body = LoginResponse
         )

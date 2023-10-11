@@ -37,10 +37,10 @@ pub async fn login(mut input: Json<Value>) -> Response<Body> {
 
     utils::response::json(
         serde_json::json!(LoginResponse {
-            status: StatusCode::CREATED.into(),
+            status: StatusCode::OK.into(),
             message: "Successfully signed in".to_string(),
             data: serde_json::json!(input)
         }),
-        StatusCode::CREATED,
+        StatusCode::OK,
     )
 }
