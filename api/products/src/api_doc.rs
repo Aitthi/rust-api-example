@@ -1,4 +1,5 @@
-use utoipa::{
+use common::utoipa::{
+    self,
     OpenApi,
     Modify
 };

@@ -1,5 +1,5 @@
 [package]
-name = "utils"
+name = "common"
 version = "0.1.0"
 edition = "2021"
 
@@ -9,7 +9,6 @@ edition = "2021"
 http = "0.2.9"
 axum = "0.6.20"
 futures = "0.3.28"
-serde_json = "1.0.104"
-
-[dev-dependencies]
-tokio = { version = "1", features = ["rt"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+utoipa = { version = "4", features = ["axum_extras"] }

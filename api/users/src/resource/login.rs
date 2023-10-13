@@ -1,11 +1,13 @@
-use axum::{
-    body::Body,
-    http::{Response, StatusCode},
-    Json,
+use common::{
+    axum::{
+        body::Body,
+        http::{Response, StatusCode},
+        Json,
+    },
+    serde_json::{self, Value},
+    utoipa::{self,ToSchema}
 };
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
-use utoipa::ToSchema;
 
 #[derive(Deserialize, Serialize, Debug, ToSchema)]
 pub struct LoginInput {
@@ -36,7 +38,7 @@ pub async fn login(mut input: Json<Value>) -> Response<Body> {
     let input: LoginInput = match serde_json::from_value(input.take()) {
         Ok(r) => r,
         Err(err) => {
-            return utils::response::json(
+            return common::response::json(
                 serde_json::json!(LoginResponse {
                     status: StatusCode::BAD_REQUEST.into(),
                     message: format!("Failed to parse input: {}", err),
@@ -47,7 +49,7 @@ pub async fn login(mut input: Json<Value>) -> Response<Body> {
         }
     };
 
-    utils::response::json(
+    common::response::json(
         serde_json::json!(LoginResponse {
             status: StatusCode::OK.into(),
             message: "Successfully signed in".to_string(),

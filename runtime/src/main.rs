@@ -1,5 +1,8 @@
-use axum::Router;
-use utoipa::OpenApi;
+use common::{
+    axum::{Router, Server},
+    tokio,
+    utoipa::OpenApi,
+};
 use utoipa_swagger_ui::SwaggerUi;
 
 #[tokio::main]
@@ -25,7 +28,7 @@ async fn main() {
         ]));
 
     println!("\n🚀 Listening on http://{}\n", addr);
-    if let Err(e) = axum::Server::bind(&addr.parse().unwrap())
+    if let Err(e) = Server::bind(&addr.parse().unwrap())
         .serve(routes.into_make_service())
         .await
     {

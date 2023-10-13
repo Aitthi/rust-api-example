@@ -150,6 +150,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "common"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "futures",
+ "http",
+ "serde_json",
+ "tokio",
+ "utoipa",
+]
+
+[[package]]
 name = "cpufeatures"
 version = "0.2.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -646,12 +658,8 @@ dependencies = [
 name = "products"
 version = "0.1.0"
 dependencies = [
- "axum",
+ "common",
  "serde",
- "serde_json",
- "tokio",
- "utils",
- "utoipa",
 ]
 
 [[package]]
@@ -725,12 +733,9 @@ checksum = "c3cbb081b9784b07cceb8824c8583f86db4814d172ab043f3c23f7dc600bf83d"
 name = "runtime"
 version = "0.1.0"
 dependencies = [
- "axum",
+ "common",
  "products",
- "serde_json",
- "tokio",
  "users",
- "utoipa",
  "utoipa-swagger-ui",
 ]
 
@@ -1076,23 +1081,8 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 name = "users"
 version = "0.1.0"
 dependencies = [
- "axum",
+ "common",
  "serde",
- "serde_json",
- "tokio",
- "utils",
- "utoipa",
-]
-
-[[package]]
-name = "utils"
-version = "0.1.0"
-dependencies = [
- "axum",
- "futures",
- "http",
- "serde_json",
- "tokio",
 ]
 
 [[package]]

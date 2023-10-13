@@ -1,4 +1,4 @@
-use axum::{routing::post, Router};
+use common::axum::{routing::post, Router};
 
 // internal
 use crate::resource;

@@ -1,4 +1,4 @@
-use utoipa::{OpenApi, Modify};
+use common::utoipa::{self, OpenApi, Modify};
 
 // internal
 use crate::resource;

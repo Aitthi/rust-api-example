@@ -6,10 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = "0.6.20"
-tokio = { version = "1.33.0", features = ["full"] }
 products = { path = "../api/products" }
 users = { path = "../api/users" }
-utoipa = { version = "4.0.0", features = ["axum_extras"] }
+common = { path = "../package/common" }
 utoipa-swagger-ui = { version = "4.0.0", features = ["axum"] }
-serde_json = "1.0.107"

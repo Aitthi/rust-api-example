@@ -8,5 +8,5 @@ members = [
   "api/products",
   "api/users",
   "package/database",
-  "package/utils",
+  "package/common",
 ]
