@@ -1,3 +1,3 @@
-pub mod routes;
-pub mod resource;
 pub mod api_doc;
+pub mod resource;
+pub mod routes;

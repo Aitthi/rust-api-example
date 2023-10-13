@@ -5,7 +5,7 @@ use common::{
         Json,
     },
     serde_json::{self, Value},
-    utoipa::{self,ToSchema}
+    utoipa::{self, ToSchema},
 };
 use serde::{Deserialize, Serialize};
 
@@ -30,7 +30,7 @@ pub struct CreateResponse {
     request_body = CreateInput,
     responses(
         (
-            status = http::StatusCode::CREATED, 
+            status = http::StatusCode::CREATED,
             description = "Successfully created product",  
             body = CreateResponse
         )

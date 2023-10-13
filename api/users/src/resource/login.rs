@@ -5,7 +5,7 @@ use common::{
         Json,
     },
     serde_json::{self, Value},
-    utoipa::{self,ToSchema}
+    utoipa::{self, ToSchema},
 };
 use serde::{Deserialize, Serialize};
 
@@ -28,7 +28,7 @@ pub struct LoginResponse {
     request_body = LoginInput,
     responses(
         (
-            status = http::StatusCode::OK, 
+            status = http::StatusCode::OK,
             description = "Successfully signed in",
             body = LoginResponse
         )
