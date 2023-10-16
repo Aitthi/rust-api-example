@@ -1,0 +1,11 @@
+runtime:
+  addr: "0.0.0.0:1337"
+jwt:
+  public: config/jwt/default_public.key
+  private: config/jwt/default_private.key
+  expire: 8h
+database:
+  engine: Speedb # Speedb
+  file: data.db
+  namespace: app_ns
+  database: app_db

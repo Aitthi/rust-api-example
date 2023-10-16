@@ -10,3 +10,5 @@ products = { path = "../api/products" }
 users = { path = "../api/users" }
 common = { path = "../package/common" }
 utoipa-swagger-ui = { version = "4.0.0", features = ["axum"] }
+config = { path = "../package/config" }
+database = { path = "../package/database" }

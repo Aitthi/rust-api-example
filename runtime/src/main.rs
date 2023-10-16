@@ -7,8 +7,11 @@ use utoipa_swagger_ui::SwaggerUi;
 
 #[tokio::main]
 async fn main() {
+    let conf = config::get_config();
+    // init database
+    database::init().await;
     // address to listen on
-    let addr = "0.0.0.0:1337";
+    let addr = &conf.runtime.addr;
     let routes = Router::new()
         .nest(
             "/api",

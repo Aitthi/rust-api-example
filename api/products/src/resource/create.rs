@@ -28,6 +28,10 @@ pub struct CreateResponse {
     post,
     path = "/create",
     request_body = CreateInput,
+    security(
+        // (), // no security
+        ("jwt_token" = [])
+     ),
     responses(
         (
             status = http::StatusCode::CREATED,
