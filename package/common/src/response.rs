@@ -12,6 +12,7 @@ pub fn json(data: Value, status: StatusCode) -> Response<Body> {
 
 pub async fn body_to_bytes(body: Body) -> Result<Vec<u8>, String> {
     match body
+        .into_data_stream()
         .try_fold(Vec::new(), |mut data, chunk| async move {
             data.extend_from_slice(&chunk);
             Ok(data)
@@ -40,6 +41,7 @@ mod tests {
         let (_, body) = res.into_parts();
         tokio::runtime::Runtime::new().unwrap().block_on(async {
             let entire_body = body
+                .into_data_stream()
                 .try_fold(Vec::new(), |mut data, chunk| async move {
                     data.extend_from_slice(&chunk);
                     Ok(data)

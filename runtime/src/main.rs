@@ -1,5 +1,5 @@
 use common::{
-    axum::{Router, Server},
+    axum::{self, Router},
     tokio,
     utoipa::OpenApi,
 };
@@ -31,10 +31,13 @@ async fn main() {
         ]));
 
     println!("\n🚀 Listening on http://{}\n", addr);
-    if let Err(e) = Server::bind(&addr.parse().unwrap())
-        .serve(routes.into_make_service())
-        .await
-    {
+    let Ok(listener) = tokio::net::TcpListener::bind(addr).await else {
+        eprintln!("Failed to bind to address");
+        return;
+    };
+
+    let server = axum::serve(listener, routes);
+    if let Err(e) = server.await {
         eprintln!("Server error: {}", e);
     }
 }
