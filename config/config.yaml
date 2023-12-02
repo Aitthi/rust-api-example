@@ -1,5 +1,6 @@
 runtime:
   addr: "0.0.0.0:1337"
+shutdown_signal: 5 # 5s
 jwt:
   public: config/jwt/default_public.key
   private: config/jwt/default_private.key

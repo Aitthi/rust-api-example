@@ -5,6 +5,7 @@ pub struct Config {
     pub runtime: Runtime,
     pub jwt: Jwt,
     pub database: Database,
+    pub shutdown_signal: u16,
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
