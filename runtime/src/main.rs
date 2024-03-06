@@ -61,6 +61,11 @@ async fn main() {
     });
     tokio::select! {
         _ = signal::ctrl_c() => {
+            println!("From ctrl_c");
+            shutdown().await;
+        },
+        _ = try_shutdown() => {
+            println!("From try_shutdown");
             shutdown().await;
         }
     }
@@ -78,6 +83,14 @@ async fn shutdown() {
         println!("Shutting down in {} seconds", i);
         tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
     }
+}
+
+// SIGTERM
+async fn try_shutdown() -> std::io::Result<()> {
+    if let Ok(mut stream) = signal::unix::signal(signal::unix::SignalKind::terminate()) {
+        stream.recv().await;
+    }
+    Ok(())
 }
 
 async fn health_check() -> Response<Body> {
